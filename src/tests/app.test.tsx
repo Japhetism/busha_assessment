@@ -17,7 +17,9 @@ test("renders sidebar links", () => {
   ];
 
   sidebarLinks.forEach((link) => {
-    const linkElement = screen.getByText(RegExp(link, "i"));
+    // const linkElement = screen.getByText(RegExp(link, "i"));
+    // expect(linkElement).toBeInTheDocument();
+    const linkElement = screen.getByRole("link", { name: RegExp(link, "i") });
     expect(linkElement).toBeInTheDocument();
   });
 });

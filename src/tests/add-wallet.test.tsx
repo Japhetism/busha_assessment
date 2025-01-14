@@ -11,6 +11,7 @@ import {
   waitForElementToBeRemoved,
   within,
 } from "./utils";
+import { formatNumber } from "../utils/helper";
 
 test("clicking 'Add new wallet' button opens the modal", async () => {
   renderRoot();
@@ -35,7 +36,7 @@ test("clicking the 'Close icon' button in the modal closes the modal", async () 
   const modal = await screen.findByTestId("modal");
   expect(modal).toBeInTheDocument();
 
-  const closeButton = within(modal).getByLabelText(/Close button/i);
+  const closeButton = within(modal).getByText(/X/i);
   expect(closeButton).toBeInTheDocument();
 
   userEvent.click(closeButton);
@@ -140,7 +141,7 @@ test("can submit wallet form successfully POST'/accounts'", async () => {
 
   userEvent.click(submitButton);
 
-  expect(within(submitButton).getByLabelText("Loading...")).toBeInTheDocument();
+  expect(within(submitButton).getByText("Loading...")).toBeInTheDocument();
 
   // close modal when request is successful
   await waitFor(() =>
@@ -148,7 +149,7 @@ test("can submit wallet form successfully POST'/accounts'", async () => {
   );
 
   const accountName = await screen.findByText(/Stellar/i);
-  const accountBalance = await screen.findByText("0");
+  const accountBalance = await screen.findByText(formatNumber("0"));
   const accountCurrency = await screen.findByText("XLM");
 
   expect(accountName).toBeInTheDocument();
@@ -169,7 +170,7 @@ test("shows error when POST'/accounts' fails", async () => {
 
   // fetch available wallets
   await waitFor(() =>
-    expect(withinModal.queryByLabelText("Loading...")).not.toBeInTheDocument()
+    expect(withinModal.queryByText("Loading...")).not.toBeInTheDocument()
   );
 
   const submitButton = withinModal.getByText(/Create wallet/i);
@@ -180,7 +181,7 @@ test("shows error when POST'/accounts' fails", async () => {
 
   userEvent.click(submitButton);
 
-  expect(within(submitButton).getByLabelText("Loading...")).toBeInTheDocument();
+  expect(within(submitButton).getByText("Loading...")).toBeInTheDocument();
 
   const errorMessage = await withinModal.findByText(/Network error/i);
 
