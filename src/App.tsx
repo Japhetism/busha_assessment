@@ -48,7 +48,7 @@ const HeaderWithActionsWrapper = styled.div`
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedLink, setSelectedLink] = useState<string>("/wallets")
+  const [selectedLink, setSelectedLink] = useState<string>("/")
   const username = "Oluwatobi Akindunjoye";
 
   return (
