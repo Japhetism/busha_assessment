@@ -44,6 +44,7 @@ const HeaderWithActionsWrapper = styled.div`
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedLink, setSelectedLink] = useState<string>("/wallets")
   const username = "Oluwatobi Akindunjoye";
 
   return (
@@ -51,7 +52,7 @@ const App = () => {
       <Header username={username} />
       <MainContentWrapper>
         <SidemenuWrapper>
-          <Sidemenu links={menus} activeLink="/wallets" onLinkClick={() => {}} />
+          <Sidemenu links={menus} activeLink={selectedLink} onLinkClick={(link) => setSelectedLink(link)} />
         </SidemenuWrapper>
 
         <BodyContentWrapper>

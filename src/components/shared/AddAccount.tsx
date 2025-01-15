@@ -132,10 +132,9 @@ const AddAccount = ({ modalOpen, setModalOpen }: IAddAccount) => {
       if (!response.ok) {
         setCreateError("Network error")
       } else {
-        setModalOpen(false)
+        setSelectedWallet("");
+        setModalOpen(false);
       }
-
-      const result = await response.json();
     } catch (error) {
       setCreateError("Network error");
     } finally {

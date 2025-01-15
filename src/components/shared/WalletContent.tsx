@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import CustomText from "./CustomText";
 import Circular from "./Circular";
 
@@ -43,7 +43,7 @@ const WalletContent: React.FC<WalletContentProps> = ({
   return <CardContent data-testid={`account-${index}`}>
     <CardType>
       <Circular height="34px" width="34px" color={typeColor}>
-        <img src={typeIcon} alt={type} height="18px" width="18px" />
+        <img src={typeIcon} alt={type || ""} height="18px" width="18px" />
       </Circular>
       <CustomText fontSize="md" color="#9AA5B1">{type}</CustomText>
     </CardType>
@@ -55,7 +55,7 @@ const WalletContent: React.FC<WalletContentProps> = ({
     </CardValue>
     <CardAction>
       <Circular height="30px" width="30px" color="#303030">
-        <img src="/images/arrowright.png" height="20px" width="20px" />
+        <img src="/images/arrowright.png" alt="arrow" height="20px" width="20px" />
       </Circular>
     </CardAction>
   </CardContent>
