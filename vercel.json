@@ -6,14 +6,14 @@
         "use": "@vercel/node"
       },
       {
-        "src": "client/package.json",
+        "src": "package.json",
         "use": "@vercel/node",
         "config": {
           "maxLambdaSize": "50mb"
         }
       },
       {
-        "src": "client/build/**",
+        "src": "build/**",
         "use": "@vercel/static"
       }
     ],
@@ -24,11 +24,11 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/client/build/$1"
+        "dest": "build/$1"
       },
       {
         "src": "/",
-        "dest": "/client/build/index.html"
+        "dest": "build/index.html"
       }
     ]
   }
