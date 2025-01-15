@@ -56,7 +56,6 @@ server.use("/accounts", (req, res, next) => {
 });
 
 server.use(router);
-server(req, res);
-// server.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
