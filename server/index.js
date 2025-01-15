@@ -1,5 +1,3 @@
-// api/server.js
-
 const path = require("path");
 const jsonServer = require("json-server");
 
@@ -7,10 +5,12 @@ const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "..", "db.json"));
 const middlewares = jsonServer.defaults();
 
-// Use bodyParser middleware
+const PORT = process.env.SERVER_PORT || 3090;
+
+server.use(middlewares);
+
 server.use(jsonServer.bodyParser);
 
-// Your custom `/accounts` route logic
 server.use("/accounts", (req, res, next) => {
   if (req.method === "POST") {
     if (!req.body.currency) {
@@ -51,10 +51,11 @@ server.use("/accounts", (req, res, next) => {
     router.db.getState().wallets.splice(walletIndex, 1);
     router.db.write();
   }
+  // Continue to JSON Server router
   next();
 });
 
-// Vercel serverless function handler
-module.exports = (req, res) => {
-  server(req, res, () => {}); // Use the `json-server` handler for Vercel
-};
+server.use(router);
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
