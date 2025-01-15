@@ -2,25 +2,25 @@
     "version": 2,
     "builds": [
       {
-        "src": "package.json",        // Build the React app using the root package.json
-        "use": "@vercel/static-build"  // Use Vercel's default static build process
+        "src": "package.json",       
+        "use": "@vercel/static-build" 
       },
       {
-        "src": "server/index.js",     // Use the Node.js server for API routes
-        "use": "@vercel/node"         // Handle the server-side API routes with @vercel/node
+        "src": "server/index.js",     
+        "use": "@vercel/node"       
       }
     ],
     "routes": [
       {
-        "src": "/api/(.*)",           // API routes handled by server/index.js
+        "src": "/api/(.*)",          
         "dest": "server/index.js"
       },
       {
-        "src": "/(.*)",               // All other requests are routed to the React app's build
+        "src": "/(.*)",        
         "dest": "/$1"
       },
       {
-        "src": "/",                   // Root path serves index.html from React app build
+        "src": "/",                 
         "dest": "/index.html"
       }
     ]
