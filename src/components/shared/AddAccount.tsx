@@ -8,6 +8,7 @@ import Error from "./Error";
 import SelectBox from "./Select";
 import Alert from "./Alert";
 import { IWallet } from "../../interface";
+import { apiBaseUrl } from "../../fixtures/constant";
 
 interface IAddAccount {
   modalOpen: boolean;
@@ -86,7 +87,7 @@ const AddAccount = ({ modalOpen, setModalOpen }: IAddAccount) => {
     setLoading(true);
     setError("");
     
-    fetch("http://localhost:3090/wallets")
+    fetch(`${apiBaseUrl}/wallets`)
       .then((response) => response.json())
       .then((data) => {
         if (isMounted.current) {
@@ -121,7 +122,7 @@ const AddAccount = ({ modalOpen, setModalOpen }: IAddAccount) => {
     try {
       setCreateError('');
 
-      const response = await fetch("http://localhost:3090/accounts", {
+      const response = await fetch(`${apiBaseUrl}/accounts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { formatNumber, getWalletColor, getWalletIcon } from "../../utils/helper";
 import { IAccount } from "../../interface";
+import { apiBaseUrl } from "../../fixtures/constant";
 
 const CardsGrid = styled.div`
   display: grid;
@@ -46,7 +47,7 @@ const AccountList = ({ modalOpen }: IAccountList) => {
     setLoading(true);
     setError("");
 
-    fetch("http://localhost:3090/accounts")
+    fetch(`${apiBaseUrl}/accounts`)
       .then((response) => response.json())
       .then((data) => {
         if (isMounted.current) {
