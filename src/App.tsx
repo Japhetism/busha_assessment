@@ -22,6 +22,10 @@ const MainContentWrapper = styled.div`
 const SidemenuWrapper = styled.div`
   width: 250px;
   padding: 10px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const BodyContentWrapper = styled.div`

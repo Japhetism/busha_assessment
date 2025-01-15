@@ -31,6 +31,10 @@ const CardContainer = styled.div<{ variant?: "primary" | "secondary", width: str
       color: ${props.color || "#FFF"};
       background-color: ${props.bgColor || "#000"};
     `}
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export interface WalletCardProps {
