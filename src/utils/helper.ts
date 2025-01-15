@@ -4,27 +4,29 @@ export const formatNumber = (num: string): string => {
 }
 
 export const getWalletIcon = (currency: string): string => {
+  const basePath = process.env.PUBLIC_URL + '/images/';
   switch (currency) {
     case "ngn":
-      return "/images/naira.png";
+      return `${basePath}naira.png`;
     case "eth":
-      return "/images/eth.png";
+      return `${basePath}eth.png`;
     case "btc":
-      return "/images/bitcoin.png";
+      return `${basePath}bitcoin.png`;
     case "xlm":
-      return "/images/stellar.png";
+      return `${basePath}stellar.png`;
     case "xrp":
-      return "/images/ripple.png";
+      return `${basePath}ripple.png`;
     case "doge":
-      return "/images/dogecoin.png";
+      return `${basePath}dogecoin.png`;
     case "trx":
-      return "/images/tron.png";
+      return `${basePath}tron.png`;
     case "ltc":
-      return "/images/ltc.png";
+      return `${basePath}ltc.png`;
     default:
-      return "/images/coin.jpeg";
+      return `${basePath}coin.jpeg`;
   }
-}
+};
+
 
 export const getWalletColor = (currency: string): string => {
   switch (currency) {
