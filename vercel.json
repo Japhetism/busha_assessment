@@ -1,25 +1,17 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server/index.js",     
-        "use": "@vercel/node"       
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",          
-        "dest": "server/index.js"
-      }
-    ],
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      },
-      "commands": [
-        "npm install",
-        "npm run build"
-      ]
+  "buildCommand": "npm install && npm run build",
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.js",     
+      "use": "@vercel/node"       
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",          
+      "dest": "server/index.js"
+    }
+  ]
+}
   
