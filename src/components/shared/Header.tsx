@@ -57,6 +57,10 @@ const UsernameSection = styled.div`
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const UsernameInitials = styled.div`
